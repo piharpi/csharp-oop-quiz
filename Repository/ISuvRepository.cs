@@ -9,7 +9,7 @@ namespace JuraganMobil.Repository
 {
     internal interface ISuvRepository
     {
-        List<Suv> FindAll();
+        List<Suv> FindAllSuv();
         Suv FindById(string id);
         List<Suv> Create(Suv suv);
         Suv Update(string id, Suv suv);

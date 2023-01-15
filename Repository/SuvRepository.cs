@@ -19,9 +19,17 @@ namespace JuraganMobil.Repository
             _vehicles = collection.FetchAll(); 
         }
 
-        public List<Suv> FindAll()
+        public List<Suv> FindAllSuv()
         {
             List<Suv> suvs = new List<Suv>();
+
+            foreach (var vhc in _vehicles)
+            {
+                if (vhc is Suv)
+                {
+                    suvs.Add((Suv)vhc);
+                }
+            }
 
             return suvs;
         }
@@ -30,7 +38,7 @@ namespace JuraganMobil.Repository
         {
             _vehicles.Add(suv);
 
-            return FindAll();
+            return FindAllSuv();
         }
 
         public int Delete(string id)
