@@ -1,5 +1,7 @@
-﻿using JuraganMobil.Repository;
-using JuraganMobil.Summary;
+﻿using JuraganMobil.Collection;
+using JuraganMobil.Model;
+using JuraganMobil.Repository;
+using JuraganMobil.InfoSummary;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -12,18 +14,14 @@ namespace JuraganMobil.Base
 {
     internal class RepositoryManager : IRepositoryManager
     {
+        private IVehicleCollection _vehicles;
+
         private ISuvRepository _suv;
-        private IVehicleRepository _vehicle;
         private ISummary _summary;
 
-        public IVehicleRepository Vehicle {
-            get
-            {
-                if (_vehicle is null)
-                    _vehicle = new VehicleRepository();
-
-                return _vehicle;
-            }
+        public RepositoryManager(IVehicleCollection collection)
+        {
+            _vehicles = collection;
         }
 
         public ISuvRepository Suv
@@ -31,7 +29,7 @@ namespace JuraganMobil.Base
             get
             {
                 if (_suv is null)
-                    _suv = new SuvRepository();
+                    _suv = new SuvRepository(_vehicles);
 
                 return _suv;
             }
@@ -42,7 +40,7 @@ namespace JuraganMobil.Base
             get
             {
                 if (_summary is null)
-                    _summary = new InfoSummary();
+                    _summary = new Summary(_vehicles);
                 return _summary;
             }
         }

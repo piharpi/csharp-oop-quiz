@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JuraganMobil.Repository
+namespace JuraganMobil.Collection
 {
-    internal interface IVehicleRepository
+    internal interface IVehicleCollection
     {
-        List<BaseVehicle> FindAll();
-        BaseVehicle FindById(string id);     
+        List<BaseVehicle> FetchAll();
     }
 }

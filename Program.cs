@@ -1,4 +1,5 @@
 ﻿using JuraganMobil.Base;
+using JuraganMobil.Collection;
 using JuraganMobil.Model;
 using System.Data;
 using System.Runtime.InteropServices;
@@ -9,8 +10,19 @@ namespace JuraganMobil
     {
         static void Main(string[] args)
         {
-            var repoManager = new RepositoryManager();
+            var collection = new VehicleCollection();
+            var repoManager = new RepositoryManager(collection);
 
+
+            Console.WriteLine("TotalVehicleSuv {0}", repoManager.Summary.GetTotalVehicle("Suv"));
+            Console.WriteLine("TotalVehicleTaxi {0}", repoManager.Summary.GetTotalVehicle("Taxi"));
+            Console.WriteLine("TotalVehiclePrivateJet {0}", repoManager.Summary.GetTotalVehicle("PrivateJet"));
+            Console.WriteLine("TotalVehicleAll {0}", repoManager.Summary.GetTotalVehicle());
+
+            Console.WriteLine("TotalIncomeVehicle Suv : {0}", repoManager.Summary.GetTotalIncomeVehicle("Suv"));
+            Console.WriteLine("TotalIncomeVehicle Taxi : {0}", repoManager.Summary.GetTotalIncomeVehicle("Taxi"));
+            Console.WriteLine("TotalIncomeVehicle PrivateJet : {0}", repoManager.Summary.GetTotalIncomeVehicle("PrivateJet"));
+            Console.WriteLine("TotalIncomeVehicle All : {0}", repoManager.Summary.GetTotalIncomeVehicle());
 
             //----------------- FindAll ----------------
             var findAllSuv = repoManager.Suv.FindAll();
@@ -33,6 +45,8 @@ namespace JuraganMobil
             //----------------- Delete ----------------
             //var deleteSuv = repoManager.Suv.Delete("D 1003 UM");
             //Console.WriteLine($"Deleted Row : {deleteSuv}")
+
+
         }
     }
 }

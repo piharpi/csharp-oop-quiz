@@ -1,4 +1,5 @@
-﻿using JuraganMobil.Model;
+﻿using JuraganMobil.Collection;
+using JuraganMobil.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,37 +12,34 @@ namespace JuraganMobil.Repository
     internal class SuvRepository : ISuvRepository
     {
 
-        private List<Suv> _suvs;
+        private List<BaseVehicle> _vehicles;    
 
-        public SuvRepository()
+        public SuvRepository(IVehicleCollection collection)
         {
-            _suvs = new List<Suv>{
-                new Suv("D 1001 UM", "2010", 350000000M, 3500000M, 4, new DateOnly(2023, 01, 10), 500000M, 150000M)
-               ,new Suv("D 1002 UM", "2010", 350000000M, 3500000M, 4, new DateOnly(2023, 01, 10), 500000M, 150000M)
-               ,new Suv("D 1003 UM", "2015", 350000000M, 3500000M, 5, new DateOnly(2023, 01, 12), 500000M, 150000M)
-               ,new Suv("D 1004 UM", "2015", 350000000M, 3500000M, 5, new DateOnly(2023, 01, 13), 500000M, 150000M)
-            };
+            _vehicles = collection.FetchAll(); 
         }
 
         public List<Suv> FindAll()
         {
-            return _suvs;
+            List<Suv> suvs = new List<Suv>();
+
+            return suvs;
         }
 
         public List<Suv> Create(Suv suv)
         {
-            _suvs.Add(suv);
+            _vehicles.Add(suv);
 
             return FindAll();
         }
 
         public int Delete(string id)
         {
-            var suvId = _suvs.Find(s => s.NoPolice.Equals(id));
+            var suvId = _vehicles.Find(s => s.NoPolice.Equals(id));
 
             if (suvId is not null)
             {
-               _suvs.Remove(suvId);
+               _vehicles.Remove(suvId);
                return 1;
             }
 
@@ -50,11 +48,11 @@ namespace JuraganMobil.Repository
 
         public Suv FindById(string id)
         {
-            var suvId = _suvs.Find(s => s.NoPolice.Equals(id));
+            var suvId = _vehicles.Find(s => s.NoPolice.Equals(id));
 
             if (suvId is not null)
             {
-                return suvId;
+                return (Suv)suvId;
             }
 
             return null;
@@ -63,7 +61,7 @@ namespace JuraganMobil.Repository
         public Suv Update(string id, Suv suv)
         {
             var existSuv = FindById(id);
-            var suvIdx = _suvs.FindIndex(s => s.NoPolice.Equals(id));
+            var suvIdx = _vehicles.FindIndex(s => s.NoPolice.Equals(id));
 
             if (existSuv is not null)
             {
@@ -76,7 +74,7 @@ namespace JuraganMobil.Repository
                 existSuv.Rent = suv.Rent.Equals(0) ? existSuv.Rent : suv.Rent;
                 existSuv.Driver = suv.Rent.Equals(0) ? existSuv.Driver : suv.Driver;
 
-                _suvs[suvIdx] = existSuv;
+                _vehicles[suvIdx] = existSuv;
 
                 return existSuv;
             }

@@ -9,22 +9,22 @@ namespace JuraganMobil.Model
     internal class Taxi : Car
     {
         private DateOnly _transactionDate;
-        private decimal _rent;
-        private decimal _driver;
+        private int _order;
+        private decimal _orderPerKm;
         private decimal _total;
         private static int _count;
-        public Taxi(string noPolice, string year, decimal price, decimal tax, int seat, DateOnly transactionDate, decimal rent, decimal driver) : base(noPolice, year, price, tax, seat)
+        public Taxi(string noPolice, string year, decimal price, decimal tax, int seat, DateOnly transactionDate, int order, decimal orderPerKm) : base(noPolice, year, price, tax, seat)
         {
             _transactionDate = transactionDate;
-            _rent = rent;
-            _driver = driver;
-            _total = _rent + _driver;
+            _order = order;
+            _orderPerKm = orderPerKm;
+            _total = _order * _orderPerKm;
             _count += 1;
         }
         public DateOnly TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         public decimal Total { get => _total; }
-        public decimal Rent { get => _rent; set => _rent = value; }
-        public decimal Driver { get => _driver; set => _driver = value; }
+        public int Order { get => _order; set => _order = value; }
+        public decimal OrderPerKm { get => _orderPerKm; set => _orderPerKm = value; }
         public static int Count()
         {
             return _count;

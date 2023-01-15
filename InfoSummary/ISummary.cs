@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JuraganMobil.Summary
+namespace JuraganMobil.InfoSummary
 {
     internal interface ISummary
     {
         int GetTotalVehicle();
         decimal GetTotalIncomeVehicle();
-        int GetTotalVehicle(Object vehicle);
-        decimal GetTotalIncomeVehicle(Object vehicle);
+        int GetTotalVehicle(string vehicle);
+        decimal GetTotalIncomeVehicle(string vehicle);
     }
 }
