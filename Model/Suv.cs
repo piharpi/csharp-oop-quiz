@@ -14,6 +14,7 @@ namespace JuraganMobil.Model
         private decimal _driver;
         private decimal _total;
         private static int _count;
+
         public Suv(string noPolice, string year, decimal price, decimal tax, int seat, DateOnly transactionDate, decimal rent, decimal driver) : base(noPolice, year, price, tax, seat)
         {
             _transactionDate = transactionDate;
@@ -43,9 +44,6 @@ namespace JuraganMobil.Model
             }
         }
 
-        public static int Count()
-        {
-            return _count;
-        }
+        public static int Count => _count; 
     }
 }

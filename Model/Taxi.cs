@@ -41,9 +41,6 @@ namespace JuraganMobil.Model
                 _total = _orderPerKm * _order;
             }  
         }
-        public static int Count()
-        {
-            return _count;
-        }
+        public static int Count => _count;
     }
 }

@@ -44,10 +44,6 @@ namespace JuraganMobil.Model
             }
         }
 
-        public static int Count()
-        {
-            return _count;
-        }
-
+        public static int Count => _count;
     }
 }

@@ -14,7 +14,7 @@ namespace JuraganMobil
             var repoManager = new RepositoryManager(collection);
 
             //---------------- Summary -----------------
-            //Console.WriteLine("TotalVehicleSuv {0}", repoManager.Summary.GetTotalVehicle("Suv"));
+            Console.WriteLine("TotalVehicleSuv {0}", repoManager.Summary.GetTotalVehicle("Suv"));
             //Console.WriteLine("TotalVehicleTaxi {0}", repoManager.Summary.GetTotalVehicle("Taxi"));
             //Console.WriteLine("TotalVehiclePrivateJet {0}", repoManager.Summary.GetTotalVehicle("PrivateJet"));
             //Console.WriteLine("TotalVehicleAll {0}", repoManager.Summary.GetTotalVehicle());
@@ -30,7 +30,7 @@ namespace JuraganMobil
             //    Console.WriteLine(s);
 
             //----------------- Create Suv----------------
-            //var createSuv = repoManager.Suv.Create(new Suv("P 1999 DK", "2010", 350000000M, 3500000M, 4, new DateOnly(2023, 01, 10), 500000M, 150000M));
+            //var createSuv = repoManager.Suv.Create(new Suv("P 1999 DK", "2010", 350000000M, 3500000M, 4, new DateOnly(2023, 01, 10), 500_000M, 150_000M));
             //foreach (var suv in createSuv)
             //    Console.WriteLine(suv);
 
@@ -43,7 +43,7 @@ namespace JuraganMobil
             //Console.WriteLine(updateSuv);
 
             //----------------- Delete Suv ----------------
-            //var deleteSuv = repoManager.Suv.Delete("D 1003 UM");
+            var deleteSuv = repoManager.Suv.Delete("D 1003 UM");
             //Console.WriteLine($"Deleted Row : {deleteSuv}");
 
 
@@ -97,6 +97,8 @@ namespace JuraganMobil
             //{
             //    Console.WriteLine(vhc);
             //}
+
+            Console.WriteLine("TotalIncomeVehicle Suv : {0}", repoManager.Summary.GetTotalVehicle("Suv"));
         }
     }
 }

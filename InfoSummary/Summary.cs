@@ -74,16 +74,39 @@ namespace JuraganMobil.InfoSummary
             return totalIncome;
         }
 
+        //public int GetTotalVehicle(String vehicle)
+        //{
+        //    if (vehicle.Equals("Suv"))
+        //        return Suv.Count;
+
+        //    if (vehicle.Equals("Taxi"))
+        //        return Taxi.Count;
+
+        //    if (vehicle.Equals("PrivateJet"))
+        //        return PrivateJet.Count;
+
+        //    return 0;
+        //}
+
         public int GetTotalVehicle(String vehicle)
         {
             if (vehicle.Equals("Suv"))
-                return Suv.Count();
+            {
+                var suvs = _vehicles.FetchAll().FindAll(suv => suv is Suv);
+                return suvs.Count;
+            }
 
             if (vehicle.Equals("Taxi"))
-                return Taxi.Count();
+            {
+                var txs = _vehicles.FetchAll().FindAll(taxi => taxi is Taxi);
+                return txs.Count;
+            }
 
             if (vehicle.Equals("PrivateJet"))
-                return PrivateJet.Count();
+            {
+                var jets = _vehicles.FetchAll().FindAll(pjet => pjet is PrivateJet);
+                return jets.Count;
+            }
 
             return 0;
         }
