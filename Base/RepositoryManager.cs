@@ -16,8 +16,11 @@ namespace JuraganMobil.Base
     {
         private IVehicleCollection _vehicles;
 
-        private ISuvRepository _suv;
-        private ISummary _summary;
+        private ISuvRepository? _suv;
+        private ITaxiRepository? _taxi;
+        private IPrivateJetRepository? _privateJet;
+
+        private ISummary? _summary;
 
         public RepositoryManager(IVehicleCollection collection)
         {
@@ -35,6 +38,17 @@ namespace JuraganMobil.Base
             }
         }
 
+        public IPrivateJetRepository PrivateJet
+        {
+            get
+            {
+                if (_privateJet is null)
+                    _privateJet = new PrivateJetRepository(_vehicles);
+
+                return _privateJet;
+            }
+        }
+
         public ISummary Summary
         {
             get
@@ -42,6 +56,17 @@ namespace JuraganMobil.Base
                 if (_summary is null)
                     _summary = new Summary(_vehicles);
                 return _summary;
+            }
+        }
+
+        public ITaxiRepository Taxi 
+        {
+            get
+            {
+                if (_taxi is null)
+                    _taxi = new TaxiRepository(_vehicles);
+
+                return _taxi;
             }
         }
     }

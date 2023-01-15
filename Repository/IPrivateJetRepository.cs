@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace JuraganMobil.Repository
 {
-    internal interface ISuvRepository
+    internal interface IPrivateJetRepository
     {
-        List<Suv> FindAll();
-        Suv FindById(string id);
-        List<Suv> Create(Suv suv);
-        Suv Update(string id, Suv suv);
+        List<PrivateJet> FindAll();
+        PrivateJet FindById(string id);
+        List<PrivateJet> Create(PrivateJet pjet);
+        PrivateJet Update(string id, PrivateJet pjet);
         int Delete(string id);
     }
 }

@@ -24,8 +24,24 @@ namespace JuraganMobil.Model
         }
         public DateOnly TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         public decimal Total { get => _total; } 
-        public decimal Rent { get => _rent; set => _rent = value; }
-        public decimal Driver { get => _driver; set => _driver = value; }
+        public decimal Rent 
+        { 
+            get => _rent;
+            set
+            {
+                _rent = value;
+                _total = _rent + _driver;
+            }
+        }
+        public decimal Driver 
+        {
+            get => _driver; 
+            set 
+            { 
+                _driver = value;
+                _total = _driver + _rent;
+            }
+        }
 
         public static int Count()
         {

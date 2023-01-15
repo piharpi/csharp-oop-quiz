@@ -13,6 +13,8 @@ namespace JuraganMobil.Base
     internal interface IRepositoryManager
     {
         public ISuvRepository Suv { get; }
+        public ITaxiRepository Taxi { get; }
+        public IPrivateJetRepository PrivateJet { get; }
 
         public ISummary Summary { get; }
     }

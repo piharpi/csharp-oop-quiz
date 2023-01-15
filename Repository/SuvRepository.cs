@@ -19,7 +19,7 @@ namespace JuraganMobil.Repository
             _vehicles = collection.FetchAll(); 
         }
 
-        public List<Suv> FindAllSuv()
+        public List<Suv> FindAll()
         {
             List<Suv> suvs = new List<Suv>();
 
@@ -38,7 +38,7 @@ namespace JuraganMobil.Repository
         {
             _vehicles.Add(suv);
 
-            return FindAllSuv();
+            return FindAll();
         }
 
         public int Delete(string id)
@@ -69,7 +69,6 @@ namespace JuraganMobil.Repository
         public Suv Update(string id, Suv suv)
         {
             var existSuv = FindById(id);
-            var suvIdx = _vehicles.FindIndex(s => s.NoPolice.Equals(id));
 
             if (existSuv is not null)
             {
@@ -80,9 +79,7 @@ namespace JuraganMobil.Repository
                 existSuv.Year = suv.Year is null ? existSuv.Year : suv.Year;
                 existSuv.TransactionDate = suv.TransactionDate.Equals(1/1/0001) ? existSuv.TransactionDate : suv.TransactionDate;
                 existSuv.Rent = suv.Rent.Equals(0) ? existSuv.Rent : suv.Rent;
-                existSuv.Driver = suv.Rent.Equals(0) ? existSuv.Driver : suv.Driver;
-
-                _vehicles[suvIdx] = existSuv;
+                existSuv.Driver = suv.Driver.Equals(0) ? existSuv.Driver : suv.Driver;
 
                 return existSuv;
             }

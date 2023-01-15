@@ -29,7 +29,6 @@ namespace JuraganMobil.Model
         public override decimal Price { get => _price; set => _price = value; }
         public override decimal Tax { get => _tax; set => _tax = value; }
         public override int Seat { get => _seat; set => _seat = value; }
-        public DateOnly TransactionDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override string ToString()
         {
             return $"{NoPolice} \t {Year} \t {Price} \t {Tax} \t {Seat}";

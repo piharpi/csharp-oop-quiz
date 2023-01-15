@@ -23,8 +23,24 @@ namespace JuraganMobil.Model
         }
         public DateOnly TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         public decimal Total { get => _total; }
-        public int Order { get => _order; set => _order = value; }
-        public decimal OrderPerKm { get => _orderPerKm; set => _orderPerKm = value; }
+        public int Order 
+        { 
+            get => _order;
+            set 
+            {
+                _order = value;
+                _total = _order * _orderPerKm;
+            } 
+        }
+        public decimal OrderPerKm 
+        { 
+            get => _orderPerKm;
+            set 
+            {
+                _orderPerKm = value;
+                _total = _orderPerKm * _order;
+            }  
+        }
         public static int Count()
         {
             return _count;
