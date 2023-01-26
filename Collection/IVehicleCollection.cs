@@ -1,4 +1,4 @@
-﻿using JuraganMobil.Model;
+﻿using JuraganMobil.Model.Vehicle;
 using System;
 using System.Collections.Generic;
 using System.Linq;

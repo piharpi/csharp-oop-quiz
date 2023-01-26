@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JuraganMobil.Model.Income;
+using JuraganMobil.Model.Vehicle;
 
 namespace JuraganMobil.Model
 {
@@ -13,6 +15,8 @@ namespace JuraganMobil.Model
         private decimal _driver;
         private decimal _total;
         private static int _count;
+        private readonly List<PrivateJetIncome> _incomes = new List<PrivateJetIncome> { };
+
         public PrivateJet(string noPolice, string year, decimal price, decimal tax, int seat, DateOnly transactionDate, decimal rent, decimal driver) : base(noPolice, year, price, tax, seat)
         {
             _rent = rent;
@@ -45,5 +49,7 @@ namespace JuraganMobil.Model
         }
 
         public static int Count => _count;
+
+        public List<PrivateJetIncome> Incomes { get => _incomes; }
     }
 }

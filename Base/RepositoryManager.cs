@@ -27,47 +27,12 @@ namespace JuraganMobil.Base
             _vehicles = collection;
         }
 
-        public ISuvRepository Suv
-        {
-            get
-            {
-                if (_suv is null)
-                    _suv = new SuvRepository(_vehicles);
+        public ISuvRepository Suv => _suv ??= new SuvRepository(_vehicles);
 
-                return _suv;
-            }
-        }
+        public IPrivateJetRepository PrivateJet => _privateJet ??= new PrivateJetRepository(_vehicles);
 
-        public IPrivateJetRepository PrivateJet
-        {
-            get
-            {
-                if (_privateJet is null)
-                    _privateJet = new PrivateJetRepository(_vehicles);
+        public ISummary Summary => _summary ??= new Summary(_vehicles);
 
-                return _privateJet;
-            }
-        }
-
-        public ISummary Summary
-        {
-            get
-            {
-                if (_summary is null)
-                    _summary = new Summary(_vehicles);
-                return _summary;
-            }
-        }
-
-        public ITaxiRepository Taxi 
-        {
-            get
-            {
-                if (_taxi is null)
-                    _taxi = new TaxiRepository(_vehicles);
-
-                return _taxi;
-            }
-        }
+        public ITaxiRepository Taxi => _taxi ??= new TaxiRepository(_vehicles);
     }
 }

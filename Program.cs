@@ -1,6 +1,7 @@
 ﻿using JuraganMobil.Base;
 using JuraganMobil.Collection;
 using JuraganMobil.Model;
+using JuraganMobil.Model.Income;
 using System.Data;
 using System.Runtime.InteropServices;
 
@@ -14,7 +15,7 @@ namespace JuraganMobil
             var repoManager = new RepositoryManager(collection);
 
             //---------------- Summary -----------------
-            Console.WriteLine("TotalVehicleSuv {0}", repoManager.Summary.GetTotalVehicle("Suv"));
+            //Console.WriteLine("TotalVehicleSuv {0}", repoManager.Summary.GetTotalVehicle("Suv"));
             //Console.WriteLine("TotalVehicleTaxi {0}", repoManager.Summary.GetTotalVehicle("Taxi"));
             //Console.WriteLine("TotalVehiclePrivateJet {0}", repoManager.Summary.GetTotalVehicle("PrivateJet"));
             //Console.WriteLine("TotalVehicleAll {0}", repoManager.Summary.GetTotalVehicle());
@@ -43,9 +44,8 @@ namespace JuraganMobil
             //Console.WriteLine(updateSuv);
 
             //----------------- Delete Suv ----------------
-            var deleteSuv = repoManager.Suv.Delete("D 1003 UM");
+            //var deleteSuv = repoManager.Suv.Delete("D 1003 UM");
             //Console.WriteLine($"Deleted Row : {deleteSuv}");
-
 
             //----------------- FindAll Taxi ----------------
             //var findAllTaxi = repoManager.Taxi.FindAll();
@@ -98,7 +98,25 @@ namespace JuraganMobil
             //    Console.WriteLine(vhc);
             //}
 
-            Console.WriteLine("TotalIncomeVehicle Suv : {0}", repoManager.Summary.GetTotalVehicle("Suv"));
+            //var privateJett = repoManager.PrivateJet.FindById("ID8089");
+            //privateJett.Incomes.Add(new PrivateJetIncome(new DateOnly(2023, 04, 01), 150000000M, 10000000M));
+            //privateJett.Incomes.Add(new PrivateJetIncome(new DateOnly(2023, 04, 01), 134000000M, 10000000M));
+
+
+            //var pjetss = privateJett.Incomes;
+
+            //foreach (var pjettincome in pjetss)
+            //{
+            //    Console.WriteLine(pjettincome.Total);
+            //} 
+
+            DateOnly hari_ini = DateOnly.Parse(DateTime.Today.ToString("yyyy MM dd"));
+
+
+            Console.WriteLine(hari_ini);
+            //DateTime.Now.ToString();
+
+            //Console.WriteLine("TotalIncomeVehicle Suv : {0}", repoManager.Summary.GetTotalVehicle("Suv"));
         }
     }
 }

@@ -7,8 +7,14 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JuraganMobil.Model
+namespace JuraganMobil.Model.Vehicle
 {
+    enum VehicleType
+    {
+        Suv,
+        Taxi,
+        PrivateJet
+    }
     internal abstract class BaseVehicle
     {
         public abstract string NoPolice { get; set; }
